@@ -7,17 +7,34 @@
   <title>CSS-logo</title>
   <link href="./style.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Ultra" rel="stylesheet"> 
+  <script src="./script.js"></script>
 </head>
 <body>
-  <section class="main-container">
+  <article class="main-container">
+    <section class="input-area">
+      <H1>Make your own slogan!</H1>
+        <label for="first">First Letter(s) (1 to 5 characters):</label>
+        <input type="text" id="first" name="first" required placeholder="E" minlength="1" maxlength="5" size="5">
+
+        <label for="second">Second Letter(s) (1 to 5 characters):</label>
+        <input type="text" id="second" name="second" required placeholder="A" minlength="1" maxlength="5" size="5">
+
+        <label for="third">Third Letter(s) (1 to 10 characters):</label>
+        <input type="text" id="third" name="third" required placeholder="Sports" minlength="1" maxlength="10" size="10">
+                
+        <label for="fourth">Fourth Letter(s) (1 to 15 characters):</label>
+        <input type="text" id="fourth" name="fourth" required placeholder="It's in the game" minlength="1" maxlength="15" size="10">
+
+        <button class="load-animation" onclick="animateText();">Try it out</button>
+    </section>
     <section class="logo-container">
       <div class="fade-in-border circle-content"></div>
-      <div class="animate-title first red-text">E</div>
-      <div class="animate-title second red-text">A</div>      
-      <div class="animate-title blue-text">
-        Sports</div>
-      </section>
-      <div class="animate-slogan black-text">It's in the game</div>  
-  </section>
+      <div class="content animate-title first red-text">E</div>
+      <div class="content animate-title second red-text">A</div>      
+      <div class="content animate-title third blue-text">Sports</div>
+      <div class="content animate-slogan fourth black-text">It's in the game</div>
+    </section>
+
+  </article>
 </body>
 </html>
