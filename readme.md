@@ -14,5 +14,7 @@
   - backgrounds
   - borders
   - changing the font
+- Add css prefixes and backup properties for proper display in Internet Explorer.
+- Fix potential script issues for Internet Explorer.
 - Use project for concept react + wordpress plugin. 
 - Somehow allow user to save the animation as a gif or mp4 (This looks surprisingly hard and might require rebuilding the animation on canvas or something like that.)
