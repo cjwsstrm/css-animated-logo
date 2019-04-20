@@ -4,9 +4,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const contentAreas = document.querySelectorAll('.content');
   const redTextContainers = document.querySelectorAll('.red-text');
   const blueTextContainer = document.querySelector('.blue-text');
-  // Regexp for testing certain characters that take up more space (for font resizing)
-  const characterCheck = RegExp(/^[wWmM]+$/);
-  let largeCharacterPresent;
   
   // check for changes in each input field
   input.forEach(function(element) {
@@ -19,54 +16,52 @@ window.addEventListener('DOMContentLoaded', (event) => {
     contentAreas.forEach(element => {
       if (element.classList.contains(targetElementClass)) {
         element.textContent = e.srcElement.value;
-        changeFontSize(element);
+        changeFontSize();
       }
-    })
+    });
   }
 
 // change fontsize based on number of characters
 
 // Add variable for current largest red text string length and check that variable before changing font size
-function changeFontSize(element) {
-  if (element.classList.contains('red-text')) {
-    if (element.textContent.length === 1) {
+function changeFontSize() {
+  let redStringLengths = [];
+  let longestredString = 0;
+  redTextContainers.forEach(function(element) {
+    redStringLengths.push(element.textContent.length);
+  });
+  longestredString = redStringLengths.reduce(function(a, b) {
+    return Math.max(a, b);
+  });
+  console.log(longestredString);
+  redTextContainers.forEach(function(element) {
+    if (longestredString === 1) {
       // Reset content position
       blueTextContainer.style.paddingBottom = '0';
-      redTextContainers.forEach(function(element) {
-      if (characterCheck.test(element.textContent)) {
-        console.log(`Text includes W or M. Value = ${element.textContent}`);
-        largeCharacterPresent = true;
-        setFontsize = '12vmax';
-      }
-      else if (!largeCharacterPresent) {
-        console.log(`Text does NOT include W or M. Value = ${element.textContent}`);
-        setFontsize = '14vmax';
-      }
-    });
-    largeCharacterPresent = false;
-  }
-    if (element.textContent.length > 1) {
+      setFontsize = '12vmax';
+    }
+    if (longestredString > 1) {
       // Move content upwards
       blueTextContainer.style.paddingBottom = '10vmax';
     }
-    if (element.textContent.length === 2) {
+    if (longestredString === 2) {
       setFontsize = '6vmax';
     }
-    if (element.textContent.length === 3) {
+    if (longestredString === 3) {
       setFontsize = '5vmax';
     }
-    if (element.textContent.length >= 4) {
+    if (longestredString >= 4) {
       setFontsize = '3.5vmax';
     }
-  }
-  if (element.classList.contains('blue-text')) {
-    if (element.textContent.length > 6) {
-      element.style.fontSize = '3.5vmax';
-    }
-  }
-  redTextContainers.forEach(function(element) {
     element.style.fontSize = setFontsize;
-  })
+  });
+
+  if (blueTextContainer.textContent.length > 6) {
+    console.log(blueTextContainer.textContent);
+    blueTextContainer.style.fontSize = '3.5vmax';
+  } else {
+    blueTextContainer.style.fontSize = '5vmax';
+  }
 }
 
 // Implement text to speech when animateText is triggered -> https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
