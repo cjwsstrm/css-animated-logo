@@ -21,19 +21,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
     });
   }
 
-// change fontsize based on number of characters
-
-// Add variable for current largest red text string length and check that variable before changing font size
+// change fontsize based on number of characters. Must check both red text containers and set fontsize for both according to the container with the most characters
 function changeFontSize() {
   let redStringLengths = [];
   let longestredString = 0;
+  // grab string lengths for each red text container
   redTextContainers.forEach(function(element) {
     redStringLengths.push(element.textContent.length);
   });
+  // find longest string
   longestredString = redStringLengths.reduce(function(a, b) {
     return Math.max(a, b);
   });
-  console.log(longestredString);
+  // update fontsize for red text containers
   redTextContainers.forEach(function(element) {
     if (longestredString === 1) {
       // Reset content position
@@ -55,17 +55,16 @@ function changeFontSize() {
     }
     element.style.fontSize = setFontsize;
   });
-
+  // update fontsize for blue text container
   if (blueTextContainer.textContent.length > 6) {
-    console.log(blueTextContainer.textContent);
     blueTextContainer.style.fontSize = '3.5vmax';
   } else {
     blueTextContainer.style.fontSize = '5vmax';
   }
 }
 
-// Implement text to speech when animateText is triggered -> https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
-// Have text to speech match the animation flow
+// 1. Implement text to speech when animateText is triggered -> https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
+// 2. Have text to speech match the animation flow
 
 });
 

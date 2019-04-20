@@ -2,11 +2,17 @@
 
 ## Experimenting with:
 - CSS grid
-- Viewport units
 - CSS animations
+- Viewport units
 
 ## Plans / Ideas:
 - Provide input fields to allow user to animate custom text.
 - Hook up to [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API) to read out the text.
-- Provide further customization for users, e.g. setting custom colors for text, backgrounds, borders, changing the font, etc.
+- Provide further customization for users, e.g:
+  - setting custom colors for text
+  - allowing emojis or images instead of text
+  - backgrounds
+  - borders
+  - changing the font
 - Use project for concept react + wordpress plugin. 
+- Somehow allow user to save the animation as a gif or mp4 (This looks surprisingly hard and might require rebuilding the animation on canvas or something like that.)
