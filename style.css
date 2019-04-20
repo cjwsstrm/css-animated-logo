@@ -11,7 +11,7 @@ body {
   padding: 0 20px;
   display: grid;
   display: -ms-grid;
-  -ms-grid-template-columns: 1fr 2fr;
+  -ms-grid-columns: 1fr 2fr;
   grid-template-columns: 1fr 2fr;
   justify-items: center;
   align-items: center;
