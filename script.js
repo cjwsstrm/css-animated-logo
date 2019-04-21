@@ -1,4 +1,6 @@
 window.addEventListener('DOMContentLoaded', function(event) {
+  console.log('DOM fully loaded and parsed');
+  // Array.from polyfill from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
   // Production steps of ECMA-262, Edition 6, 22.1.2.1
   if (!Array.from) {
     Array.from = (function () {
@@ -77,7 +79,8 @@ window.addEventListener('DOMContentLoaded', function(event) {
       };
     }());
   }
-  console.log('DOM fully loaded and parsed');
+  // End of polyfill
+
   const input = Array.from(document.querySelectorAll('input'));
   const button = document.querySelector('button');
   const contentAreas = Array.from(document.querySelectorAll('.content'));
@@ -90,7 +93,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
   });
 
   // trigger text animation on button being pressed
-  button.addEventListener('click', animateLogo);
+  button.addEventListener('click', animateAndSpeak);
   
   // change corresponding area on the logo
   function changeText(e) {
@@ -170,8 +173,52 @@ window.addEventListener('DOMContentLoaded', function(event) {
   
   // 1. Implement text to speech when animateText is triggered -> https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
   // 2. Have text to speech match the animation flow
-  function speakText() {
+  var synth = window.speechSynthesis;
 
+  // var inputTxt = document.querySelector('.txt');
+  var voiceSelect = document.querySelector('select');
+
+  var voices = [];
+
+  function populateVoiceList() {
+    voices = synth.getVoices();
+  
+    for(i = 0; i < voices.length ; i++) {
+      var option = document.createElement('option');
+      option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+      
+      if(voices[i].default) {
+        option.textContent += ' -- DEFAULT';
+      }
+  
+      option.setAttribute('data-lang', voices[i].lang);
+      option.setAttribute('data-name', voices[i].name);
+      voiceSelect.appendChild(option);
+    }
+  }
+  populateVoiceList();
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+  }
+
+  function speakText(element) {
+    var utterThis = new SpeechSynthesisUtterance(element.textContent);
+    var selectedOption = voiceSelect.selectedOptions[0].getAttribute('data-name');
+    for(i = 0; i < voices.length ; i++) {
+      if(voices[i].name === selectedOption) {
+        utterThis.voice = voices[i];
+      }
+    }
+    // utterThis.pitch = pitch.value;
+    // utterThis.rate = rate.value;
+    synth.speak(utterThis);
+  }
+
+  function animateAndSpeak() {
+    animateLogo();
+    contentAreas.forEach(function(element) {
+      speakText(element);
+    });
   }
 
 });

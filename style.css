@@ -4,11 +4,11 @@ body {
   margin: auto;
 }
 .main-container {
-  /* width: 100%; */
+  width: 100vw;
   max-width: 1200px;
   height: 100%;
   margin: auto;
-  padding: 0 20px;
+  padding: 0 2vmax;
   display: grid;
   display: -ms-grid;
   -ms-grid-columns: 1fr 2fr;
@@ -35,6 +35,9 @@ body {
 .input-area button {
   padding: 5px;
   font-size: 16px;
+}
+.input-area select {
+  margin: 0 0 1vmax;
 }
 .logo-container {
   -ms-grid-column: 2;
@@ -188,11 +191,15 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-content: center;
+    padding: 0;
   }
   .input-area {
     order: 2;
+    width: 90vw;
   }
   .logo-container {
     order: 1;
+    align-self: center;
   }
  }
