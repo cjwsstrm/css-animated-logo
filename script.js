@@ -127,7 +127,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
       }
       if (longestredString > 1) {
         // Move content upwards
-        blueTextContainer.style.paddingBottom = '10vmax';
+        blueTextContainer.style.paddingBottom = '12vmax';
       }
       if (longestredString === 2) {
         setFontsize = '6vmax';
@@ -142,7 +142,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
     });
     // update fontsize for blue text container
     if (blueTextContainer.textContent.length > 6) {
-      blueTextContainer.style.fontSize = '3.5vmax';
+      blueTextContainer.style.fontSize = '3vmax';
     } else {
       blueTextContainer.style.fontSize = '5vmax';
     }
