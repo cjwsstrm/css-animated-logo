@@ -13,13 +13,15 @@ body {
   display: grid;
   display: -ms-grid;
   -ms-grid-columns: 1fr 2fr;
+  -ms-grid-rows: 1fr;
   grid-template-columns: 1fr 2fr;
   justify-items: center;
   align-items: center;
-  align-content: center;
+  /* align-content: center; */
 }
 .input-area {
   -ms-grid-column: 1;
+  -ms-grid-row-align: center;
   grid-column: 1 / 2;
   display: flex;
   flex-direction: column;
@@ -48,6 +50,7 @@ body {
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   -ms-grid-column-align: center;
+  -ms-grid-row-align: center;
   grid-column: 2 / 4;
   display: -ms-grid;
   display: grid;
