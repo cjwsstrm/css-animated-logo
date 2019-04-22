@@ -1,3 +1,4 @@
+// Font-size calculations are the equivalent of using vmax. E.g. calc(35 * (1vw + 1vh - 1vmin)) is the same as 35vmax.
 window.addEventListener('DOMContentLoaded', function(event) {
   console.log('DOM fully loaded and parsed');
   // Array.from polyfill from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
