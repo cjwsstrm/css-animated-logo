@@ -148,7 +148,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
     }
   }
 
-  // function for animating logo
+  // animate the logo
   function animateLogo() {
     let logoContainerContent = Array.from(document.querySelector('.logo-container').children);
     // console.log(logoContainerContent);
@@ -174,10 +174,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
   // 1. Implement text to speech when animateText is triggered -> https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
   // 2. Have text to speech match the animation flow
   var synth = window.speechSynthesis;
-
-  // var inputTxt = document.querySelector('.txt');
   var voiceSelect = document.querySelector('select');
-
   var voices = [];
 
   function populateVoiceList() {
