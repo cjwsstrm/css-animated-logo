@@ -124,35 +124,34 @@ window.addEventListener('DOMContentLoaded', function(event) {
       if (longestredString === 1) {
         // Reset content position
         blueTextContainer.style.paddingBottom = '0';
-        setFontsize = '12vmax';
+        setFontsize = 'calc(12 * (1vw + 1vh - 1vmin))';
       }
       if (longestredString > 1) {
         // Move content upwards
-        blueTextContainer.style.paddingBottom = '12vmax';
+        blueTextContainer.style.paddingBottom = 'calc(12 * (1vw + 1vh - 1vmin))';
       }
       if (longestredString === 2) {
-        setFontsize = '6vmax';
+        setFontsize = 'calc(6 * (1vw + 1vh - 1vmin))';
       }
       if (longestredString === 3) {
-        setFontsize = '5vmax';
+        setFontsize = 'calc(5 * (1vw + 1vh - 1vmin))';
       }
       if (longestredString >= 4) {
-        setFontsize = '3.5vmax';
+        setFontsize = 'calc(3.5 * (1vw + 1vh - 1vmin))';
       }
       element.style.fontSize = setFontsize;
     });
     // update fontsize for blue text container
     if (blueTextContainer.textContent.length > 6) {
-      blueTextContainer.style.fontSize = '3vmax';
+      blueTextContainer.style.fontSize = 'calc(3 * (1vw + 1vh - 1vmin))';
     } else {
-      blueTextContainer.style.fontSize = '5vmax';
+      blueTextContainer.style.fontSize = 'calc(5 * (1vw + 1vh - 1vmin))';
     }
   }
 
   // animate the logo
   function animateLogo() {
     let logoContainerContent = Array.from(document.querySelector('.logo-container').children);
-    // console.log(logoContainerContent);
     logoContainerContent.forEach(function(element) {
       if (element.classList.contains('circle-content')) {
         element.classList.remove('fade-in-border');
